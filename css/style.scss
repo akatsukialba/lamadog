@@ -1,0 +1,536 @@
+@charset 'utf-8';
+
+$sp : 768px; // スマホ
+$pd : 1230px; // パディング調整
+$tb : 1024px; // タブレット
+$color : #ae0009;
+
+@mixin sp {
+  @media screen and (max-width: ($sp)) {
+    @content;
+  }
+}
+@mixin pd {
+  @media screen and (max-width: ($pd)) {
+    @content;
+  }
+}
+@mixin tb {
+  @media screen and (max-width: ($tb)) {
+    @content;
+  }
+}
+
+/* ------------------------------ */
+/* base
+/* ------------------------------ */
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%; /* 10px */
+}
+html, body,
+ul, ol, li,
+h1, h2, h3, h4, h5, h6, p, div, figure,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',sans-serif;
+  color: #333;
+  background-color: #fff;
+  letter-spacing: 0;
+  line-height: 1;
+  font-weight: normal;
+}
+li {
+  list-style: none;
+}
+a {
+  display: inline-block;
+  text-decoration: none;
+  &:hover {
+    opacity: .7;
+    transition: .3s;
+  }
+}
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: bottom;
+}
+
+.pc {
+  @include sp { 
+    display: none;
+  }
+}
+.sp {
+  display: none;
+  @include sp { 
+    display: block;
+  }
+}
+
+/* ------------------------------ */
+/* layout
+/* ------------------------------ */
+.container {
+  display: block;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 150px;
+  @include pd {
+    padding: 0 73px;
+  }
+  @include tb {
+    padding: 0 20px;
+  }
+  @include sp {
+    padding: 0 4vw;
+  }
+}
+
+/* ------------------------------ */
+/* parts
+/* ------------------------------ */
+.section-ttl {
+  text-align: center;
+  font-size: 4rem;
+  font-weight: bold;
+  @include sp {
+    font-size: 2.6rem;
+  }
+}
+
+.btn {
+  width: 126px;
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-top: 40px;
+  margin-bottom: 110px;
+  padding: 9px 0 11px;
+  text-align: center;
+  background-color: $color;
+  color: #fff;
+  @include sp {
+    margin-top: 31px;
+  }
+}
+
+/* ------------------------------ */
+/* header
+/* ------------------------------ */
+.header {
+  height: 60px;
+  @include sp {
+    height: 50px;
+  }
+  &-inner {
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include sp {
+      height: 50px;
+    }
+  }
+  &-logo {
+    @include sp {
+      width: 73px;
+      height: 25px;
+    }
+  }
+  &-list {
+    width: 216px;
+    display: flex;
+    justify-content: space-between;
+    @include sp {
+      width: 100%;
+    }
+  }
+  &-item {
+    font-size: 1.8rem;
+    font-weight: bold;
+    @include sp {
+      font-size: 1.4rem;
+      margin-right: 12px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+    a {
+      color: #333;
+    }
+  }
+}
+
+/* ------------------------------ */
+/* mv
+/* ------------------------------ */
+.mv {
+  &-inner {
+    background: url(../img/mv.png) no-repeat center/cover;
+    width: 100%;
+    max-width: 1280px;
+    height: 47vw;
+    max-height: 605px;
+    margin: 0 auto;
+    position: relative;
+    @include sp {
+      background: url(../img/mv_sp.png) no-repeat center/cover;
+      height: 513px;
+    }
+    img {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      transform: translate(0, -50%);
+    }
+  }
+}
+
+/* ------------------------------ */
+/* main-theme
+/* ------------------------------ */
+.main-theme {
+  .container {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    text-align: center;
+    @include sp {
+      margin-bottom: 60px;
+    }
+  }
+  .main-ttl {
+    font-size: 3.2rem;
+    font-weight: bold;
+    @include sp {
+      font-size: 2rem;
+    }
+  }
+  .main-txt {
+    font-size: 2rem;
+    margin-top: 50px;
+    line-height: 1.7;
+    @include sp {
+      font-size: 1.4rem;
+      margin-top: 42px;
+    }
+  }
+}
+
+/* ------------------------------ */
+/* dog1
+/* ------------------------------ */
+.dog1 {
+  background-color: #f9f9f9;
+  padding-top: 96px;
+  padding-bottom: 99px;
+  text-align: center;
+  @include sp {
+    padding-top: 70px;
+    padding-bottom: 50px;
+  }
+  &-list {
+    margin-top: 87px;
+    @include sp {
+      margin-top: 77px;
+    }
+  }
+  &-item {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    &:nth-child(2) {
+      flex-direction: row-reverse;
+      margin: 69px 0 119px;
+      @include sp {
+        flex-direction: column;
+        margin: 82px 0 72px;
+      }
+    }
+    @include sp {
+      flex-direction: column;
+    }
+  }
+  &-img {
+    width: 46%; //コンテナ幅980pxに対して要素の幅450px 450/980=約46%
+    max-width: 450px;
+    @include sp {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+  &-txtContent {
+    width: 47%; //コンテナ幅980pxに対して要素の幅460px 460/980=約47%
+    max-width: 460px;
+    text-align: left;
+    @include sp {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+  &-ttl {
+    font-size: 2.6rem;
+    font-weight: bold;
+    border-bottom: 3px solid $color;
+    line-height: 1.7;
+    @include sp {
+      font-size: 2rem;
+      margin-top: 18px;
+    }
+  }
+  &-txt {
+    font-size: 1.8rem;
+    padding-top: 30px;
+    line-height: 1.7;
+    @include sp {
+      padding-top: 1.8rem;
+      font-size: 1.6rem;
+    }
+  }
+}
+
+/* ------------------------------ */
+/* dog2
+/* ------------------------------ */
+.dog2 {
+  padding-top: 96px;
+  padding-bottom: 89px;
+  text-align: center;
+  @include sp {
+    padding-top: 70px;
+    padding-bottom: 108px;
+  }
+
+  &-list {
+    margin-top: 62px;
+    display: flex;
+    justify-content: space-between;
+    @include sp {
+      flex-direction: column;
+      width: 100%;
+      margin-top: 0px
+    }
+  }
+  &-item {
+    width: 31%; //コンテナ幅980pxに対して画像の幅300px 300/980=約31%
+    max-width: 300px;
+    @include sp {
+      width: 87%;
+      margin: 50px auto 0;
+    }
+  }
+  &-img {
+    width: 100%;
+  }
+  &-txtContent {
+    text-align: left;
+  }
+  &-txt {
+    font-size: 1.6rem;
+    font-weight: normal;
+    line-height: 1.7;
+    margin-top: 32px;
+    @include sp {
+      margin-top: 20px;
+    }
+  }
+}
+
+/* ------------------------------ */
+/* sv
+/* ------------------------------ */
+.sv {
+  &-inner {
+    background: url(../img/dog_bg_01.png) no-repeat center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1280px;
+    height: 33.5vw;
+    max-height: 431px;
+    margin: 0 auto;
+    @include sp {
+      background: url(../img/dog_bg_sp.png) no-repeat center/cover;
+      height: 403px;
+    }
+  }
+  &-txtContent {
+    max-width: 500px;
+    margin: 0 0 0 auto;
+  }
+  &-txt {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #fff;
+    line-height: 1.7;
+    @include sp {
+      font-size: 1.6rem;
+      font-weight: normal;
+    }
+    &:first-child {
+      margin-bottom: 40px;
+      @include sp {
+        margin-bottom: 30px;
+      }
+    }
+  }
+}
+
+/* ------------------------------ */
+/* dog3
+/* ------------------------------ */
+.dog3 {
+  text-align: center;
+  padding-top: 107px;
+  @include sp {
+    padding-top: 80px;
+  }
+  table {
+    border-collapse:collapse;
+    margin-top: 74px;
+    width: 100%;
+    @include sp {
+      margin-top: 49px;
+    }
+  }
+  tr {
+    border-top: 1px solid #777;
+    border-bottom: 1px solid #777;
+  }
+  td {
+    font-size: 1.6rem;
+    padding: 13px 0;
+    text-align: left;
+    @include sp {
+      padding: 0;
+      font-size: 1.4rem;
+    }
+    &:nth-child(1) {
+      width: 204px;
+      font-weight: bold;
+      @include sp {
+        display: block;
+        width: 100%;
+        margin-top: 9px;
+      }
+    }
+    &:nth-child(2) {
+      padding-left: 36px;
+      @include sp {
+        display: block;
+        width: 100%;
+        text-align: left;
+        padding-left: 0;
+        margin: 15px 0 10px;
+        line-height: 1.7;
+      }
+      a {
+        color: #333;
+      }
+    }
+    .new {
+      display: inline-block;
+      border: 1px solid $color;
+      margin-left: 10px;
+      a {
+        color: $color;
+        display: block;
+        font-size: 1.6rem;
+        font-weight: normal;
+        width: 86px;
+        height: 26px;
+        line-height: 26px;
+        text-align: center;
+        @include sp {
+          font-size: 1.4rem;
+        }
+      }
+    }
+  }
+}
+
+/* ------------------------------ */
+/* footer
+/* ------------------------------ */
+.footer {
+  .sitemap {
+    background-color: #afafaf;
+    padding: 70px 0 82px;
+    @include tb {
+      padding: 55px 0 36px;
+    }
+    &-contents {
+      display: flex;
+      justify-content: space-between;
+      @include tb {
+        flex-direction: column;
+      }
+    }
+    &-box {
+      width: 31%; //コンテナ幅980pxに対して要素の幅300px 300/980=約31%
+      max-width: 300px;
+      text-align: left;
+      @include tb {
+        width: 50%;
+        margin: 0 auto;
+        &:nth-child(n+2) {
+          padding-top: 32px;
+        }
+      }
+      @include sp {
+        width: 100%;
+        max-width: 100%;
+        text-align: left;
+      }
+    }
+    &-ttl {
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: #fff;
+      border-bottom: 1px solid #fff;
+      padding-bottom: 9px;
+      @include tb {
+        font-size: 1.4rem;
+      }
+    }
+    &-list {
+      padding-top: 28px;
+    }
+    &-item {
+      a {
+        font-size: 1.6rem;
+        font-weight: normal;
+        color: #fff;
+        @include sp {
+          font-size: 1.4rem;
+        }
+      }
+      &:nth-child(n+2) {
+        padding-top: 11px;
+      }
+    }
+  }
+  .copy {
+    font-size: 1.2rem;
+    background-color: #797979;
+    color: #fff;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    @include sp {
+      height: 36px;
+      line-height: 36px;
+    }
+  }
+}
